@@ -5,7 +5,7 @@ Udp_server::Udp_server()
     unsigned short port = 8000;//设置本机端口
     myaddr.sin_family = AF_INET;//域
     myaddr.sin_port = htons(port);//主机字节序转换为网络字节序
-    myaddr.sin_addr.s_addr = htonl(INADDR_ANY);//绑定本机网卡的所有地址
+    myaddr.sin_addr.s_addr = htonl(INADDR_ANY);//绑定本机网卡的所有ip地址
 }
 
 Udp_server::~Udp_server()

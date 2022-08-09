@@ -1,0 +1,219 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.82
+# Built for x86_64-redhat-linux-gnu
+# Copyright (C) 2010  Free Software Foundation, Inc.
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# This is free software: you are free to change and redistribute it.
+# There is NO WARRANTY, to the extent permitted by law.
+
+# Make data base, printed on Mon Aug  8 18:53:59 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# default
+.SHELLFLAGS := -c
+# environment
+VSCODE_AGENT_FOLDER = /home/qmj/.vscode-server
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# default
+MAKE_VERSION := 3.82
+# makefile
+CURDIR := /home/qmj/linux_net
+# makefile
+SHELL = /bin/sh
+# environment
+VSCODE_NLS_CONFIG = {"locale":"zh-cn","availableLanguages":{}}
+# environment
+_ = /usr/bin/make
+# makefile
+MAKEFILE_LIST := 
+# environment
+HISTCONTROL = ignoredups
+# environment
+XDG_DATA_DIRS = /home/qmj/.local/share/flatpak/exports/share/:/var/lib/flatpak/exports/share/:/usr/local/share/:/usr/share/
+# environment
+LESSOPEN = ||/usr/bin/lesspipe.sh %s
+# environment
+VSCODE_CWD = /home/qmj
+# environment
+SSH_CONNECTION = 192.168.230.1 50846 192.168.230.132 22
+# environment
+PATH = /home/qmj/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/remote-cli:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/home/qmj/.local/bin:/home/qmj/bin
+# environment
+XDG_RUNTIME_DIR = /run/user/1000
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# environment
+SELINUX_USE_CURRENT_RANGE = 
+# default
+.FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver check-symlink
+# automatic
+%F = $(notdir $%)
+# environment
+PWD = /home/qmj/linux_net
+# environment
+VSCODE_IPC_HOOK_CLI = /run/user/1000/vscode-ipc-d6a1489e-34de-4caa-9ec2-bf9b1779c004.sock
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /home/qmj
+# environment
+LOGNAME = qmj
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# automatic
++F = $(notdir $+)
+# environment
+SELINUX_LEVEL_REQUESTED = 
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+HOSTNAME = localhost.localdomain
+# environment
+MAKELEVEL := 0
+# default
+MAKE = $(MAKE_COMMAND)
+# default
+MAKECMDGOALS := all
+# environment
+SHLVL = 5
+# environment
+XDG_SESSION_ID = 10
+# environment
+USER = qmj
+# makefile
+.DEFAULT_GOAL := 
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := make
+# default
+.VARIABLES := 
+# automatic
+*F = $(notdir $*)
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# environment
+SSH_CLIENT = 192.168.230.1 50846 22
+# environment
+MAIL = /var/spool/mail/qmj
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# environment
+BROWSER = /home/qmj/.vscode-server/bin/3b889b090b5ad5793f524b5d1d39fda662b96a2a/bin/helpers/browser.sh
+# environment
+VSCODE_HANDLES_SIGPIPE = true
+# default
+MAKEFILES := 
+# automatic
+<F = $(notdir $<)
+# environment
+LC_ALL = C
+# automatic
+^F = $(notdir $^)
+# environment
+SELINUX_ROLE_REQUESTED = 
+# default
+SUFFIXES := 
+# environment
+HISTSIZE = 1000
+# default
+.INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
+# default
+.RECIPEPREFIX := 
+# environment
+LANG = C
+# variable set hash-table stats:
+# Load=64/1024=6%, Rehash=0, Collisions=6/83=7%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 2051, inode 19729596): 7 files, no impossibilities.
+
+# 7 files, no impossibilities in 1 directories.
+
+# Implicit Rules
+
+# No implicit rules.
+
+# Files
+
+# Not a target:
+all:
+#  Command line target.
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+makefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+GNUmakefile:
+#  Implicit rule search has been done.
+#  File does not exist.
+#  File has been updated.
+#  Failed to be updated.
+
+# files hash-table stats:
+# Load=6/1024=1%, Rehash=0, Collisions=0/15=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 0 / lookups = 18 / hits = 18
+# # of strcache buffers: 1 (* 8176 B/buffer = 8176 B)
+# strcache used: total = 0 (131) / max = 0 / min = 8176 / avg = 0
+# strcache free: total = 0 (8045) / max = 0 / min = 8176 / avg = 0
+
+# strcache hash-table stats:
+# Load=15/8192=0%, Rehash=0, Collisions=1/18=6%
+# Finished Make data base on Mon Aug  8 18:53:59 2022
+
+ 
+make: *** No rule to make target `all'.  Stop.
+
