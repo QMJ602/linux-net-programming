@@ -29,3 +29,9 @@ unsigned int Udp_client::send(char* sendbuf)
     std::cout << "send len=" << len << std::endl;
     return len;
 }
+
+void Udp_client::recieve(char* recvbuf)
+{
+    socklen_t socklen = sizeof(dest_addr);
+    recvfrom(socket_fd, recvbuf, sizeof(recvbuf), 0, (struct sockaddr*)&dest_addr, &socklen);
+}

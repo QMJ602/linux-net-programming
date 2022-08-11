@@ -7,7 +7,7 @@ OBJ=$(addprefix $(BUILD_DIR)/, $(notdir $(patsubst %.cpp, %.o, $(SOURCE))))#.cpp
 INCLUDES=-I./include # 头文件路径
 
 CC := g++
-TARGET = client
+TARGET = server
 
 $(TARGET):$(OBJ)
 	$(CC) $(OBJ) -o $(TARGET)

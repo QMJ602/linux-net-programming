@@ -13,6 +13,7 @@ class Udp_client{
         ~Udp_client();
         void init();
         unsigned int send(char* sendbuf);
+        void recieve(char* recvbuf);
     private:
         struct sockaddr_in dest_addr;//目标地址结构体
         int socket_fd;
