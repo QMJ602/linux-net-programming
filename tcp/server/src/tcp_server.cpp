@@ -39,5 +39,33 @@ void Tcp_server::Init()
     //监听连接的到来  将套接字由主动修改为被动，使操作系统为该套接字设置一个连接队列，用来记录所有连接到该套接字的连接。
     listen(socket_fd, 10); //套接字， 连接队列的长度 
 
+    while(1)
+    {
+        struct sockaddr_in client_addr;
+        int connfd;
+        socklen_t addr_len = sizeof(client_addr);
+        //取出已连接的套接字
+        connfd = accept(socket_fd, (struct sockaddr*)&client_addr, &addr_len);
+
+        if(connfd < 0)
+        {
+            std::cerr << "accept" << std::endl;
+            continue; 
+        }
+        char* client_ip = "";
+        //ip地址转换为点分10进制字符串
+        inet_ntop(AF_INET, &client_addr.sin_addr, client_ip, INET_ADDRSTRLEN);
+        unsigned short client_port = ntohs(client_addr.sin_port);
+
+        printf("client ip=%s, port=%d\n", client_ip, client_port);
+
+        char recv_buf[50];
+        while(recv(connfd, recv_buf, sizeof(recv_buf), 0) > 0)
+        {
+            printf("接收到的数据：%s\n", recv_buf);
+        }
+        close(connfd);
+    }
+    close(socket_fd);
 }
 
