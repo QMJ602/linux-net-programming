@@ -5,13 +5,13 @@
 #include <stdlib.h>
 #include <iostream>
 #include <string.h>
+#include <stdio.h>
 
 class Tcp_server{
 public:
     Tcp_server();
     ~Tcp_server();
     void Init();
-    void recieve();
 private:
     int socket_fd;
     struct sockaddr_in myaddr;

@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+.././include/udp_client.h
+stdio.h
+-
+iostream
+-
+arpa/inet.h
+-
+sys/socket.h
+-
+netinet/in.h
+-
+string.h
+-
+stdlib.h
+-
+unistd.h
+-
+
+/home/qmj/linux_net/udp/client/src/main.cpp
+udp_client.h
+/home/qmj/linux_net/udp/client/src/udp_client.h
+
+/home/qmj/linux_net/udp/client/src/udp_client.cpp
+udp_client.h
+/home/qmj/linux_net/udp/client/src/udp_client.h
+

@@ -2,7 +2,7 @@
 
 int main()
 {
-    char* ip = "192.168.131.1";
+    char* ip = "192.168.230.132";
     unsigned short port = 9000;
     char sendbuf[50];
     Tcp_client tcpc;
