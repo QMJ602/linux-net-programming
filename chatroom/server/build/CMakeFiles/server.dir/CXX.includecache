@@ -1,0 +1,38 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/qmj/linux_net/chatroom/server/src/server.cpp
+sys/socket.h
+-
+unistd.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+stdlib.h
+-
+iostream
+-
+string.h
+-
+stdio.h
+-
+assert.h
+-
+fcntl.h
+-
+sys/epoll.h
+-
+errno.h
+-
+unordered_map
+-
+queue
+-
+

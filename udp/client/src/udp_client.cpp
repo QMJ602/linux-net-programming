@@ -4,7 +4,7 @@ Udp_client::Udp_client(char* ip, unsigned short port)
 {
     dest_addr.sin_family = AF_INET;
     dest_addr.sin_port = htons(port);//主机字节序转换为网络字节序
-    inet_pton(AF_INET, ip, &dest_addr.sin_addr);//字符串ip转换为无符号整数
+    inet_pton(AF_INET, ip, &dest_addr.sin_addr);//字符串ip转换为无符号整数，并且转换为网络字节序
 }
 
 Udp_client::~Udp_client()

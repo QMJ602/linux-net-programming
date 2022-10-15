@@ -59,13 +59,15 @@ void Tcp_server::Init()
 
         printf("client ip=%s, port=%d\n", client_ip, client_port);
 
-        char recv_buf[50];
+        char recv_buf[100];
         memset(recv_buf, 0, sizeof(recv_buf));
         while(recv(connfd, recv_buf, sizeof(recv_buf), 0) > 0)
         {
             printf("接收到的数据：%s\n", recv_buf);
+            send(connfd, recv_buf, sizeof(recv_buf), 0);//回射
             memset(recv_buf, 0, sizeof(recv_buf));
         }
+        memset(recv_buf, 0, sizeof(recv_buf));
         close(connfd);
     }
     close(socket_fd);
