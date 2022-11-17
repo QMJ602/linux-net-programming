@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/qmj/linux_net/http/http_conn.cpp
+http_conn.h
+/home/qmj/linux_net/http/http_conn.h
+
+/home/qmj/linux_net/http/http_conn.h
+string.h
+-
+stdio.h
+-
+stdlib.h
+-
+sys/stat.h
+-
+unistd.h
+-
+fcntl.h
+-
+string
+-
+string.h
+-
+netinet/in.h
+-
+sys/sendfile.h
+-
+

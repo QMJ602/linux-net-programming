@@ -6,6 +6,8 @@
 #include<assert.h>
 #include<fcntl.h>
 #include<iostream>
+#include<string.h>
+
 int main()
 {
     int fd_in[2];
@@ -20,3 +22,4 @@ int main()
     }
     return 0;
 }
+

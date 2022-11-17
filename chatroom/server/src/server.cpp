@@ -153,7 +153,7 @@ int main(int argc, char* argv[])
                     continue;
                 }
                 char sendbuf[64];
-                //从队列中取出一条消息发送
+                //从队列中取出一条消息发送    .c_str返回的是一个临时指针，不能对其操作，需复制到新的内存区域。
                 strcpy(sendbuf, client_map[fd].write_queue.front().c_str());
                 client_map[fd].write_queue.pop();
                 ret = send(fd, sendbuf, strlen(sendbuf), 0);
