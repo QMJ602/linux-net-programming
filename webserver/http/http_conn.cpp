@@ -15,9 +15,10 @@ const char* doc_root = "/home/qmj/linux_net/Resource";//服务器根目录
 // const char* homepage = "/home/qmj/blog/public/index.html";
 const char* homepage = "/home/qmj/linux_net/Resource/login.html";
 
-Http_conn::Http_conn(int sockfd, sockaddr_in client_address)
+Http_conn::Http_conn(int sockfd, int epollfd, sockaddr_in client_address)
 {
     m_sockfd = sockfd;
+    m_epollfd = epollfd;
     m_client_address = client_address;
     init();
 }
@@ -97,8 +98,9 @@ bool Http_conn::write()
                 break;
             }
             bytes_to_send -= count;
-            printf("bytes_have_send:%ld\n", bytes_have_send);
-            printf("bytes_to_send:%ld\n", bytes_to_send);
+            // printf("bytes_have_send:%ld\n", bytes_have_send);
+            // printf("bytes_to_send:%ld\n", bytes_to_send);
+            printf("%d字节已发送\n", bytes_have_send);
         }
         close(m_file_fd);
     }
@@ -479,9 +481,21 @@ void Http_conn::process()
     {
         read_ret = process_read();
     }
-    //得到请求，确定应答内容
+    //得到请求，确定应答内容,填充发送缓冲区
     process_write(read_ret);
+    //填充完成后，可以发送了，注册写事件 重置EPOLLONESHOT
+    modfd(m_epollfd, m_sockfd, EPOLLOUT);
 }
+
+
+//修改注册的事件
+// void modfd( int epollfd, int fd, int ev )
+// {
+//     epoll_event event;
+//     event.data.fd = fd;
+//     event.events = ev | EPOLLET | EPOLLONESHOT | EPOLLRDHUP;//重置EPOLLONESHOT
+//     epoll_ctl( epollfd, EPOLL_CTL_MOD, fd, &event );
+// }
 
 
 

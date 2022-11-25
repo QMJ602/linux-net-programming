@@ -1,4 +1,10 @@
-/*基于epoll的webserver */
+/*
+* 基于epoll和线程池的并发webserver
+* 主线程负责监听连接和I/O读写
+* 工作线程负责业务处理：解析请求，确定应答信息
+* 同步I/O的Proactor模式
+* 使用了sendfile零拷贝发送文件
+*/
 
 #include <arpa/inet.h>
 #include <sys/epoll.h>
@@ -6,7 +12,8 @@
 #include <sys/socket.h>
 #include <assert.h>
 #include <iostream>
-#include "http_conn.h"
+#include "http/http_conn.h"
+#include "threadpool/threadpool.h"
 
 Http_conn* users[65536] = {NULL};
 //设置文件描述符为非阻塞模式
@@ -80,12 +87,17 @@ int main(int argc, char* argv[])
     addfd(epollfd, listen_fd, false);
 
     epoll_event events[10];//设置最多存放10个事件
+
+    //创建线程池  线程均已创建，运行着worker函数 
+    threadpool<Http_conn> pool;
+
     while(1)
     {
         int number = epoll_wait(epollfd, events, 10, 0);
         if(number < 0)
         {
             std::cerr << "epoll failure." << std::endl;
+            break;
         }
         for(int i=0;i<number;++i)
         {
@@ -103,7 +115,7 @@ int main(int argc, char* argv[])
                         break;
                     }
                     addfd(epollfd, connfd, true);
-                    users[connfd] = new Http_conn(connfd, client);
+                    users[connfd] = new Http_conn(connfd, epollfd, client);
                     char client_ip[16];
                     inet_ntop(AF_INET, &client.sin_addr, client_ip, sizeof(client_ip));
                     printf("A client entered, ip:%s\n", client_ip);
@@ -129,12 +141,10 @@ int main(int argc, char* argv[])
                 //如果连接没有关闭
                 if(users[sockfd])
                 {
-                    users[sockfd]->process();
-                    //注册写事件 重置EPOLLONESHOT
-                    modfd(epollfd, sockfd, EPOLLOUT);
+                    pool.append(users[sockfd]);//往请求队列加入任务
                 }
             }
-            else if(events[i].events & EPOLLOUT)
+            else if(events[i].events & EPOLLOUT)//可写
             {
                 users[sockfd]->write();
                 //不保持连接
@@ -144,7 +154,7 @@ int main(int argc, char* argv[])
                     delete users[sockfd];
                     users[sockfd] = NULL;
                 }
-                else
+                else//保持连接
                 {
                     users[sockfd]->init();
                     //注册读事件 重置EPOLLONESHOT
@@ -153,6 +163,8 @@ int main(int argc, char* argv[])
             }
         }
     }
+    close(epollfd);
+    close(listen_fd);
     return 0;
 }
 
